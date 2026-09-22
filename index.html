@@ -18,32 +18,16 @@
     <p>Мой ТГК: <a href="https://t.me/твой_канал" target="_blank">@ViVoid_w</a></p>
 
     <div class="card">
-        <h3>Модель:Высокое качество</h3>
-        <p>Высокая детализация,подгонка под анимирование</p>
+        <h3>3D bbmodel</h3>
+        <p>3Д хорошая модель под ваш референс - в формате BBMODEL ( blockbench ) </p>
         <div class="price">500 руб.</div>
-        <button onclick="buyModel('Model_1')">Купить</button>
-    </div>
+        <button onclick="buy('buy_Model_1')">Купить за 50 000 UZS</button>
+<script>
+    let tg = window.Telegram.WebApp;
+    tg.expand();
 
-    <div class="card">
-        <h3>Поддержать бро (Донат)</h3>
-        <p>На развитие проекта и пиво.</p>
-        <button onclick="donate()">Задонатить 100₽</button>
-    </div>
-
-    <script>
-        let tg = window.Telegram.WebApp;
-        tg.expand(); // Разворачивает приложение на весь экран
-
-        function buyModel(id) {
-            tg.sendData("buy_" + id); // Отправляет боту инфу о покупке
-            tg.close();
-        }
-
-        function donate() {
-            tg.sendData("donate_100");
-            tg.close();
-        }
-    </script>
-</body>
-</html>
-```
+    function buy(modelId) {
+        tg.sendData(modelId); // Отправляем сигнал боту
+        tg.close(); // Закрываем веб-приложение
+    }
+</script>
