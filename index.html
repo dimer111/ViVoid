@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -13,17 +12,15 @@
             background: #121212; 
             color: #ffffff; 
             padding: 15px; 
-            padding-bottom: 80px; /* Место под нижнее меню */
+            padding-bottom: 90px;
         }
 
         h1 { font-size: 24px; text-align: center; margin-bottom: 5px; color: #ff4444; }
         .subtitle { font-size: 13px; color: #888; text-align: center; margin-bottom: 20px; }
 
-        /* Вкладки (Страницы) */
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
-        /* Карточки товаров и портфолио */
         .card { 
             background: #1e1e1e; 
             border-radius: 16px; 
@@ -44,7 +41,9 @@
         
         .price { font-size: 20px; color: #44ff44; font-weight: bold; margin-bottom: 10px; }
 
-        /* Кнопки */
+        .profile-info { margin: 10px 0; text-align: left; font-size: 14px; line-height: 1.8; }
+        .profile-info span { color: #ff4444; font-weight: bold; }
+
         .btn { 
             width: 100%;
             background: #ff4444; 
@@ -62,13 +61,12 @@
         .btn:active { background: #cc0000; }
         .btn-tg { background: #0088cc; }
         .btn-tg:active { background: #006699; }
+        .btn-green { background: #28a745; }
+        .btn-green:active { background: #1e7e34; }
 
-        /* Нижнее навигационное меню */
         .bottom-nav {
             position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 0; left: 0; right: 0;
             background: #1a1a1a;
             display: flex;
             justify-content: space-around;
@@ -79,14 +77,14 @@
         .nav-item {
             color: #888;
             text-decoration: none;
-            font-size: 12px;
+            font-size: 11px;
             display: flex;
             flex-direction: column;
             align-items: center;
             cursor: pointer;
-            width: 33%;
+            width: 25%;
         }
-        .nav-item .icon { font-size: 20px; margin-bottom: 3px; }
+        .nav-item .icon { font-size: 18px; margin-bottom: 3px; }
         .nav-item.active { color: #ff4444; font-weight: bold; }
     </style>
 </head>
@@ -99,14 +97,14 @@
     <div id="tab-shop" class="tab-content active">
         <div class="card">
             <h3>3D Модель под заказ (.bbmodel)</h3>
-            <p>Модель по вашему референсу - для майнкрафта - с хорошей возможностью для анимаций </p>
+            <p>Модель по вашему референсу для майнкрафта - с хорошей возможностью для анимаций.</p>
             <div class="price">50 000 UZS</div>
             <button class="btn" onclick="buy('buy_Model_1')">Заказать модель</button>
         </div>
 
         <div class="card">
             <h3>Текстурпак под заказ</h3>
-            <p>Создание набора текстур с </p>
+            <p>Создание уникального набора текстур для блоков и предметов под ваш сервер.</p>
             <div class="price">25 000 UZS</div>
             <button class="btn" onclick="buy('buy_Pack_1')">Купить пак</button>
         </div>
@@ -115,30 +113,41 @@
     <!-- СТРАНИЦА 2: ПОРТФОЛИО -->
     <div id="tab-portfolio" class="tab-content">
         <div class="card">
-            <!-- Можешь закинуть сюда реальные ссылки на картинки своих работ -->S
-            <img src="https://via.placeholder.com/400x200/2a2a2a/ff4444?text=Модель+Дракона" alt="Работа 1">
-            <h3> Сборка Uzbekistan steam & magic </h3>
-            <p>Плохая сборка собраная на коленке</p>
-        </div>
-
-        <div class="card">
-            <img src="https://via.placeholder.com/400x200/2a2a2a/ff4444?text=Меч+Войда" alt="Работа 2">
-            <h3>3Д модель оружия Рено Итакавы </h3>
-            <p>3д модель оружия рено итакавы из кайдзю номер 8 сделаная в блок бенче</p>
+            <img src="https://via.placeholder.com/400x200/2a2a2a/ff4444?text=Void+Dragon" alt="Работа 1">
+            <h3>3D Модель Дракона</h3>
+            <p>Пример модели с кастомными текстурами и подготовкой под анимацию.</p>
         </div>
     </div>
 
-    <!-- СТРАНИЦА 3: ТГК И ХАЛЯВА -->
+    <!-- СТРАНИЦА 3: ТГК / ХАЛЯВА -->
     <div id="tab-tgc" class="tab-content">
         <div class="card" style="text-align: center;">
             <h3>Наш Telegram Канал 🎁</h3>
-            <p>Подписывайся на ТГК! Там мы регулярно сливаем **бесплатные 3D модели**, сливаем туториалы по Blockbench и выкладываем новости.</p>
+            <p>Подписывайся! Там регулярно выходят бесплатные модели, исходники и новости проекта.</p>
             <br>
             <a href="https://t.me/ViVoid_w" target="_blank" class="btn btn-tg">Перейти в ТГК @ViVoid_w</a>
         </div>
     </div>
 
-    <!-- НИЖНЯЯ ПАНЕЛЬ НАВИГАЦИИ -->
+    <!-- СТРАНИЦА 4: ПРОФИЛЬ -->
+    <div id="tab-profile" class="tab-content">
+        <div class="card">
+            <h3>Личный Профиль 👤</h3>
+            <div class="profile-info">
+                <p>Юзернейм: <span id="user-name">Загрузка...</span></p>
+                <p>Баланс: <span id="user-balance">0</span> UZS</p>
+                <p>Дата регистрации: <span id="reg-date">Сегодня</span></p>
+            </div>
+            <button class="btn btn-green" onclick="buy('topup_balance')">➕ Пополнить баланс</button>
+        </div>
+
+        <div class="card">
+            <h3>Последние покупки 🛍️</h3>
+            <p id="history-list" style="color: #888;">У вас пока нет покупок.</p>
+        </div>
+    </div>
+
+    <!-- НИЖНЕЕ МЕНЮ (4 ВКЛАДКИ) -->
     <div class="bottom-nav">
         <div class="nav-item active" onclick="switchTab('tab-shop', this)">
             <span class="icon">🛒</span>
@@ -150,7 +159,11 @@
         </div>
         <div class="nav-item" onclick="switchTab('tab-tgc', this)">
             <span class="icon">🎁</span>
-            <span>Халява / ТГК</span>
+            <span>ТГК</span>
+        </div>
+        <div class="nav-item" onclick="switchTab('tab-profile', this)">
+            <span class="icon">👤</span>
+            <span>Профиль</span>
         </div>
     </div>
 
@@ -158,30 +171,27 @@
         let tg = window.Telegram.WebApp;
         tg.expand();
 
-        // Переключение вкладок
-        function switchTab(tabId, element) {
-            // Скрываем все вкладки
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            // Убираем подсветку со всех кнопок меню
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
+        // Подгружаем имя юзера из аккаунта Телеграма
+        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+            document.getElementById('user-name').innerText = "@" + (tg.initDataUnsafe.user.username || tg.initDataUnsafe.user.first_name);
+        } else {
+            document.getElementById('user-name').innerText = "Гость";
+        }
 
-            // Показываем нужную вкладку и подсвечиваем кнопку
+        // Переключение страниц
+        function switchTab(tabId, element) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+
             document.getElementById(tabId).classList.add('active');
             element.classList.add('active');
         }
 
-        // Функция покупки
-        function buy(modelId) {
-            tg.sendData(modelId);
+        // Отправка сигнала боту
+        function buy(actionId) {
+            tg.sendData(actionId);
             tg.close();
         }
     </script>
 </body>
 </html>
-```
-
----
