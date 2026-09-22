@@ -63,7 +63,6 @@
         .btn-tg:active { background: #006699; }
         .btn-green { background: #28a745; }
         .btn-green:active { background: #1e7e34; }
-
         .bottom-nav {
             position: fixed;
             bottom: 0; left: 0; right: 0;
@@ -99,24 +98,23 @@
             <h3>3D Модель под заказ (.bbmodel)</h3>
             <p>Модель по вашему референсу - для майнкрафта - с хорошей возможностью для анимаций</p>
             <div class="price">50 000 UZS</div>
-            <button class="btn" onclick="buy('buyModel1')">Заказать модель</button>
+            <button class="btn" onclick="buy('buy_Model_1')">Заказать модель</button>
         </div>
 
         <div class="card">
             <h3>Текстурпак под заказ</h3>
             <p>Создание уникального набора текстур для блоков и предметов под ваш сервер.</p>
             <div class="price">25 000 UZS</div>
-            <button class="btn" onclick="buy('buyPack1')">Купить пак</button>
+            <button class="btn" onclick="buy('buy_Pack_1')">Купить пак</button>
         </div>
     </div>
 
-    <!-- ПОРТФОЛИО (СЮДА ВСТАВЛЯЙ СВОИ КАРТИНКИ) -->
+    <!-- ПОРТФОЛИО -->
     <div id="tab-portfolio" class="tab-content">
         <div class="card">
-            <!-- Замени эту ссылку на ссылку своей картинки -->
-            <img src="Uzbekiston1magic.png" alt="Моя модель">
-            <h3>Сборка Uzbekistan steam & magic </h3>
-            <p>Сборка сделанная на коленке</p>
+            <img src="model1.png" alt="Uzbekistan steam & magic">
+            <h3>Сборка Uzbekistan steam & magic</h3>
+            <p>Сборка сделанная на коленке.</p>
         </div>
     </div>
 
@@ -126,7 +124,7 @@
             <h3>Наш Telegram Канал 🎁</h3>
             <p>Подписывайся! Там регулярно выходят бесплатные модели, исходники и новости проекта.</p>
             <br>
-            <a href="https://t.me/ViVoidw" target="blank" class="btn btn-tg">Перейти в ТГК @ViVoidw</a>
+            <a href="https://t.me/ViVoid_w" target="_blank" class="btn btn-tg">Перейти в ТГК @ViVoid_w</a>
         </div>
     </div>
 
@@ -138,7 +136,7 @@
                 <p>Юзернейм: <span id="user-name">Загрузка...</span></p>
                 <p>Баланс: <span id="user-balance">0</span> UZS</p>
             </div>
-            <button class="btn btn-green" onclick="buy('topupbalance')">➕ Пополнить баланс</button>
+            <button class="btn btn-green" onclick="buy('topup_balance')">➕ Пополнить баланс</button>
         </div>
     </div>
 
@@ -166,10 +164,17 @@
         let tg = window.Telegram.WebApp;
         tg.expand();
 
+        // 1. ПОЛУЧАЕМ ЮЗЕРНЕЙМ ИЗ ТЕЛЕГРАМА
         if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
             document.getElementById('user-name').innerText = "@" + (tg.initDataUnsafe.user.username || tg.initDataUnsafe.user.first_name);
         } else {
             document.getElementById('user-name').innerText = "Гость";
+        }
+        // 2. СЧИТЫВАЕМ БАЛАНС ИЗ ССЫЛКИ СЕКУНДНО
+        const urlParams = new URLSearchParams(window.location.search);
+        const userBal = urlParams.get('bal');
+        if (userBal !== null) {
+            document.getElementById('user-balance').innerText = userBal;
         }
 
         function switchTab(tabId, element) {
@@ -183,7 +188,7 @@
         function buy(actionId) {
             tg.sendData(actionId);
             tg.close();
-        }
+[22.09.2026 17:43] Сэм – ChatGPT нейросеть 🧠: }
     </script>
 </body>
 </html>
