@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,65 +7,181 @@
     <title>Vi Void Mastery</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
-            font-family: sans-serif; 
-            background: #1a1a1a; 
-            color: white; 
-            text-align: center; 
-            padding: 20px; 
-        }
-        .card { 
-            background: #2a2a2a; 
-            border-radius: 15px; 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #121212; 
+            color: #ffffff; 
             padding: 15px; 
-            margin-bottom: 20px; 
-            border: 1px solid #ff4444; 
+            padding-bottom: 80px; /* Место под нижнее меню */
         }
-        button { 
+
+        h1 { font-size: 24px; text-align: center; margin-bottom: 5px; color: #ff4444; }
+        .subtitle { font-size: 13px; color: #888; text-align: center; margin-bottom: 20px; }
+
+        /* Вкладки (Страницы) */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* Карточки товаров и портфолио */
+        .card { 
+            background: #1e1e1e; 
+            border-radius: 16px; 
+            padding: 15px; 
+            margin-bottom: 15px; 
+            border: 1px solid #2a2a2a;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            object-fit: cover;
+            max-height: 200px;
+        }
+        .card h3 { font-size: 18px; margin-bottom: 6px; }
+        .card p { font-size: 13px; color: #aaa; margin-bottom: 12px; line-height: 1.4; }
+        
+        .price { font-size: 20px; color: #44ff44; font-weight: bold; margin-bottom: 10px; }
+
+        /* Кнопки */
+        .btn { 
+            width: 100%;
             background: #ff4444; 
             color: white; 
             border: none; 
-            padding: 12px 24px; 
+            padding: 12px; 
             border-radius: 10px; 
             cursor: pointer; 
             font-weight: bold; 
-            font-size: 16px;
+            font-size: 15px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
         }
-        button:active {
-            background: #cc0000;
+        .btn:active { background: #cc0000; }
+        .btn-tg { background: #0088cc; }
+        .btn-tg:active { background: #006699; }
+
+        /* Нижнее навигационное меню */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a1a1a;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 1px solid #2a2a2a;
+            z-index: 1000;
         }
-        a { 
-            color: #0088cc; 
-            text-decoration: none; 
-            font-weight: bold;
+        .nav-item {
+            color: #888;
+            text-decoration: none;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            width: 33%;
         }
-        .price { 
-            font-size: 22px; 
-            color: #44ff44; 
-            margin: 10px 0; 
-            font-weight: bold;
-        }
+        .nav-item .icon { font-size: 20px; margin-bottom: 3px; }
+        .nav-item.active { color: #ff4444; font-weight: bold; }
     </style>
 </head>
 <body>
-    <h1>Vi Void Mastery 🔥</h1>
-    <p>Мой ТГК: <a href="https://t.me/ViVoid_w" target="_blank">@ViVoid_w</a></p>
 
-    <div class="card">
-        <h3>3D BBMODEL</h3>
-        <p>Качественная 3D модель по вашему референсу в формате Blockbench (.bbmodel)</p>
-        <div class="price">50 000 UZS</div>
-        <button onclick="buy('buy_Model_1')">Купить модель</button>
+    <h1>Vi Void Mastery 🔥</h1>
+    <p class="subtitle">3D моделирование & Blockbench</p>
+
+    <!-- СТРАНИЦА 1: ТОВАРЫ -->
+    <div id="tab-shop" class="tab-content active">
+        <div class="card">
+            <h3>3D Модель под заказ (.bbmodel)</h3>
+            <p>Качественная модель по вашему референсу/эскизу для Minecraft (Blockbench). Включает текстуры и анимации.</p>
+            <div class="price">50 000 UZS</div>
+            <button class="btn" onclick="buy('buy_Model_1')">Заказать модель</button>
+        </div>
+
+        <div class="card">
+            <h3>Пак готовых текстур</h3>
+            <p>Набор из 20+ HD текстур для блоков и мобов.</p>
+            <div class="price">25 000 UZS</div>
+            <button class="btn" onclick="buy('buy_Pack_1')">Купить пак</button>
+        </div>
+    </div>
+
+    <!-- СТРАНИЦА 2: ПОРТФОЛИО -->
+    <div id="tab-portfolio" class="tab-content">
+        <div class="card">
+            <!-- Можешь закинуть сюда реальные ссылки на картинки своих работ -->
+            <img src="https://via.placeholder.com/400x200/2a2a2a/ff4444?text=Модель+Дракона" alt="Работа 1">
+            <h3>Кастомный Дракон</h3>
+            <p>Сделано для сервера Pixelmon. 1200 полигонов, кастомная анимация полета.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/400x200/2a2a2a/ff4444?text=Меч+Войда" alt="Работа 2">
+            <h3>3D Оружие Void Sword</h3>
+            <p>Детализированный меч с эффектом свечения для кастомных модов.</p>
+        </div>
+    </div>
+
+    <!-- СТРАНИЦА 3: ТГК И ХАЛЯВА -->
+    <div id="tab-tgc" class="tab-content">
+        <div class="card" style="text-align: center;">
+            <h3>Наш Telegram Канал 🎁</h3>
+            <p>Подписывайся на ТГК! Там мы регулярно сливаем **бесплатные 3D модели**, сливаем туториалы по Blockbench и выкладываем новости.</p>
+            <br>
+            <a href="https://t.me/ViVoid_w" target="_blank" class="btn btn-tg">Перейти в ТГК @ViVoid_w</a>
+        </div>
+    </div>
+
+    <!-- НИЖНЯЯ ПАНЕЛЬ НАВИГАЦИИ -->
+    <div class="bottom-nav">
+        <div class="nav-item active" onclick="switchTab('tab-shop', this)">
+            <span class="icon">🛒</span>
+            <span>Товары</span>
+        </div>
+        <div class="nav-item" onclick="switchTab('tab-portfolio', this)">
+            <span class="icon">🎨</span>
+            <span>Портфолио</span>
+        </div>
+        <div class="nav-item" onclick="switchTab('tab-tgc', this)">
+            <span class="icon">🎁</span>
+            <span>Халява / ТГК</span>
+        </div>
     </div>
 
     <script>
         let tg = window.Telegram.WebApp;
-        tg.expand(); // Разворачиваем окно на весь экран
+        tg.expand();
 
+        // Переключение вкладок
+        function switchTab(tabId, element) {
+            // Скрываем все вкладки
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Убираем подсветку со всех кнопок меню
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Показываем нужную вкладку и подсвечиваем кнопку
+            document.getElementById(tabId).classList.add('active');
+            element.classList.add('active');
+        }
+
+        // Функция покупки
         function buy(modelId) {
-            tg.sendData(modelId); // Отправляем сигнал 'buy_Model_1' в main.py
-            tg.close(); // Закрываем веб-аппку
+            tg.sendData(modelId);
+            tg.close();
         }
     </script>
 </body>
 </html>
+```
+
+---
