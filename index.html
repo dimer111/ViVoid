@@ -3,34 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Model Store</title>
+    <title>Vi Void Mastery</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        body { font-family: sans-serif; background: #1a1a1a; color: white; text-align: center; padding: 20px; }
-        .card { background: #2a2a2a; border-radius: 15px; padding: 15px; margin-bottom: 20px; border: 1px solid #ff4444; }
-        button { background: #ff4444; color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; font-weight: bold; }
-        a { color: #0088cc; text-decoration: none; }
-        .price { font-size: 20px; color: #44ff44; margin: 10px 0; }
+        body { 
+            font-family: sans-serif; 
+            background: #1a1a1a; 
+            color: white; 
+            text-align: center; 
+            padding: 20px; 
+        }
+        .card { 
+            background: #2a2a2a; 
+            border-radius: 15px; 
+            padding: 15px; 
+            margin-bottom: 20px; 
+            border: 1px solid #ff4444; 
+        }
+        button { 
+            background: #ff4444; 
+            color: white; 
+            border: none; 
+            padding: 12px 24px; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 16px;
+        }
+        button:active {
+            background: #cc0000;
+        }
+        a { 
+            color: #0088cc; 
+            text-decoration: none; 
+            font-weight: bold;
+        }
+        .price { 
+            font-size: 22px; 
+            color: #44ff44; 
+            margin: 10px 0; 
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <h1>Vi void mastery</h1>
-    <p>Мой ТГК: <a href="https://t.me/твой_канал" target="_blank">@ViVoid_w</a></p>
+    <h1>Vi Void Mastery 🔥</h1>
+    <p>Мой ТГК: <a href="https://t.me/ViVoid_w" target="_blank">@ViVoid_w</a></p>
 
     <div class="card">
-        <h3>3D bbmodel</h3>
-        <p>3Д хорошая модель под ваш референс - в формате BBMODEL ( blockbench ) </p>
-        <div class="price">500 руб.</div>
-        <button onclick="buy('buy_Model_1')">Купить за 50 000 UZS</button>
-<script>
-    let tg = window.Telegram.WebApp;
-    tg.expand();
+        <h3>3D BBMODEL</h3>
+        <p>Качественная 3D модель по вашему референсу в формате Blockbench (.bbmodel)</p>
+        <div class="price">50 000 UZS</div>
+        <button onclick="buy('buy_Model_1')">Купить модель</button>
+    </div>
 
-    function buy(modelId) {
-        tg.sendData(modelId); 
-        tg.close(); 
-    }
-</script>
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand(); // Разворачиваем окно на весь экран
+
+        function buy(modelId) {
+            tg.sendData(modelId); // Отправляем сигнал 'buy_Model_1' в main.py
+            tg.close(); // Закрываем веб-аппку
+        }
+    </script>
 </body>
 </html>
-```
