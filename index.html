@@ -34,7 +34,7 @@
             border-radius: 12px;
             margin-bottom: 10px;
             object-fit: cover;
-            max-height: 200px;
+            max-height: 220px;
         }
         .card h3 { font-size: 18px; margin-bottom: 6px; }
         .card p { font-size: 13px; color: #aaa; margin-bottom: 12px; line-height: 1.4; }
@@ -93,61 +93,56 @@
     <h1>Vi Void Mastery 🔥</h1>
     <p class="subtitle">3D модели & Blockbench</p>
 
-    <!-- СТРАНИЦА 1: ТОВАРЫ -->
+    <!-- ТОВАРЫ -->
     <div id="tab-shop" class="tab-content active">
         <div class="card">
             <h3>3D Модель под заказ (.bbmodel)</h3>
-            <p>Модель по вашему референсу для майнкрафта - с хорошей возможностью для анимаций.</p>
+            <p>Модель по вашему референсу - для майнкрафта - с хорошей возможностью для анимаций</p>
             <div class="price">50 000 UZS</div>
-            <button class="btn" onclick="buy('buy_Model_1')">Заказать модель</button>
+            <button class="btn" onclick="buy('buyModel1')">Заказать модель</button>
         </div>
 
         <div class="card">
             <h3>Текстурпак под заказ</h3>
             <p>Создание уникального набора текстур для блоков и предметов под ваш сервер.</p>
             <div class="price">25 000 UZS</div>
-            <button class="btn" onclick="buy('buy_Pack_1')">Купить пак</button>
+            <button class="btn" onclick="buy('buyPack1')">Купить пак</button>
         </div>
     </div>
 
-    <!-- СТРАНИЦА 2: ПОРТФОЛИО -->
+    <!-- ПОРТФОЛИО (СЮДА ВСТАВЛЯЙ СВОИ КАРТИНКИ) -->
     <div id="tab-portfolio" class="tab-content">
         <div class="card">
-            <img src="https://via.placeholder.com/400x200/2a2a2a/ff4444?text=Void+Dragon" alt="Работа 1">
-            <h3>3D Модель Дракона</h3>
-            <p>Пример модели с кастомными текстурами и подготовкой под анимацию.</p>
+            <!-- Замени эту ссылку на ссылку своей картинки -->
+            <img src="https://i.imgur.com/8N4Xm0L.jpg" alt="Моя модель">
+            <h3>Моя первая 3D модель</h3>
+            <p>Пример детализированной модели для Minecraft, сделанной в Blockbench.</p>
         </div>
     </div>
 
-    <!-- СТРАНИЦА 3: ТГК / ХАЛЯВА -->
+    <!-- ТГК -->
     <div id="tab-tgc" class="tab-content">
         <div class="card" style="text-align: center;">
             <h3>Наш Telegram Канал 🎁</h3>
             <p>Подписывайся! Там регулярно выходят бесплатные модели, исходники и новости проекта.</p>
             <br>
-            <a href="https://t.me/ViVoid_w" target="_blank" class="btn btn-tg">Перейти в ТГК @ViVoid_w</a>
+            <a href="https://t.me/ViVoidw" target="blank" class="btn btn-tg">Перейти в ТГК @ViVoidw</a>
         </div>
     </div>
 
-    <!-- СТРАНИЦА 4: ПРОФИЛЬ -->
+    <!-- ПРОФИЛЬ -->
     <div id="tab-profile" class="tab-content">
         <div class="card">
             <h3>Личный Профиль 👤</h3>
             <div class="profile-info">
                 <p>Юзернейм: <span id="user-name">Загрузка...</span></p>
                 <p>Баланс: <span id="user-balance">0</span> UZS</p>
-                <p>Дата регистрации: <span id="reg-date">Сегодня</span></p>
             </div>
-            <button class="btn btn-green" onclick="buy('topup_balance')">➕ Пополнить баланс</button>
-        </div>
-
-        <div class="card">
-            <h3>Последние покупки 🛍️</h3>
-            <p id="history-list" style="color: #888;">У вас пока нет покупок.</p>
+            <button class="btn btn-green" onclick="buy('topupbalance')">➕ Пополнить баланс</button>
         </div>
     </div>
 
-    <!-- НИЖНЕЕ МЕНЮ (4 ВКЛАДКИ) -->
+    <!-- НИЖНЕЕ МЕНЮ -->
     <div class="bottom-nav">
         <div class="nav-item active" onclick="switchTab('tab-shop', this)">
             <span class="icon">🛒</span>
@@ -171,14 +166,12 @@
         let tg = window.Telegram.WebApp;
         tg.expand();
 
-        // Подгружаем имя юзера из аккаунта Телеграма
         if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
             document.getElementById('user-name').innerText = "@" + (tg.initDataUnsafe.user.username || tg.initDataUnsafe.user.first_name);
         } else {
             document.getElementById('user-name').innerText = "Гость";
         }
 
-        // Переключение страниц
         function switchTab(tabId, element) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
@@ -187,7 +180,6 @@
             element.classList.add('active');
         }
 
-        // Отправка сигнала боту
         function buy(actionId) {
             tg.sendData(actionId);
             tg.close();
@@ -195,3 +187,4 @@
     </script>
 </body>
 </html>
+
